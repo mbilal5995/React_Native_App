@@ -5,7 +5,7 @@ import Splash from "./Components/Splash";
 
 export default function App() {
    const [visible, setVisible]= useState(true);
-   
+  
    setTimeout(() => {
     setVisible(false);
    }, 3000); 
