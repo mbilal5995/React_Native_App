@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, StyleSheet, Animated, Text, View } from 'react-native';
 
 
 export default function Splash() {
-  return (
+  const opacity = useState(new Animated.Value(0))[0]
+  
+  useEffect(() => {
+      fadeIn();
+    //   fadeOut();
+  }, [])
+  
+    function fadeIn() {
+        Animated.timing(opacity, {
+            toValue: 1,
+            duration: 2000,
+            useNativeDriver:true
+        }).start()
+    }
+
+    return (
      <View style={styles.container}>
-     <Image source={require('../assets/logo.png')}/>
+            <Animated.Image source={require('../assets/logo.png')} style={{opacity}} />
      <Text style={styles.heading}>Ambiance</Text>
      <Text style={styles.tagline}>Sliding into the future</Text>
     </View>
@@ -24,7 +39,8 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     marginTop:10,
     fontWeight:'700',
-    fontSize:32,
+      fontSize: 32,
+      
 
   },
   tagline: {
